@@ -41,11 +41,13 @@ add_column :admin_users, :unconfirmed_otp_secret, :string
 
 Now, check your model (`AdminUser` in my case): you should see that the devise configuration `database_authenticatable` has been replaced with `two_factor_authenticatable`:
 
-```
+```ruby
 class AdminUser < ActiveRecord::Base
   devise :rememberable, :trackable, :lockable,
          :session_limitable, :two_factor_authenticatable,
          :otp_secret_encryption_key => ENV['TWO_FACTOR_SECRET']
+  # ...
+end
 ```
 
 Run `rake db:migrate` and the setup is complete.
@@ -93,7 +95,7 @@ Open `app/views/devise/sessions/new.html.erb` and add a new field called `otp_at
 
 Then, open `app/controllers/application_controller.rb` to permit a new login parameter for our model:
 
-```
+```ruby
 before_action :configure_permitted_parameters, if: :devise_controller?
 
 protected
@@ -270,7 +272,7 @@ Once the user has two-factor auth enabled, visiting `/admin/two_factor` will ren
 
 ### Improvements
 
-There's no space left here for other words, but you can change the 'show' action to always render a template where a user can:
+If you prefer, you can change the 'show' action to always render a template where a user can:
 
 - activate __or reconfigure__ the two factor
 - disable the two factor if it's enabled
