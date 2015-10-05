@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'home/index'
-  get 'home/authenticated'
   root 'home#index'
 
   devise_for :admin_users
@@ -8,7 +7,6 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
