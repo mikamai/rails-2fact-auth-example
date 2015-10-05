@@ -1,0 +1,9 @@
+class HomeController < ApplicationController
+  before_action :authenticate_admin_user!, only: :authenticated
+
+  def index
+  end
+
+  def authenticated
+  end
+end
