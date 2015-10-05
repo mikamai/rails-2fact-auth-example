@@ -45,6 +45,6 @@ end
 
 gem 'devise'
 
-# gem 'devise-two-factor' # for two factor
-# gem 'rqrcode_png' # for qr codes
+gem 'devise-two-factor' # for two factor
+gem 'rqrcode_png' # for qr codes
 
